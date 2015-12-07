@@ -8,7 +8,7 @@ class UserController < ApplicationController
     get "/" do
       authorization_check
       @user_name = session[:current_user].user_name
-      redirect "/items/"
+      erb :profile_home
     end
 
 
@@ -37,7 +37,7 @@ class UserController < ApplicationController
         # save into session control
         session[:current_user] = user
         # force the URL to the items root to show list
-        redirect "/items/"
+        erb :profile_home
       else
         @message = "All fields must have a value"
         erb :register
@@ -57,7 +57,7 @@ class UserController < ApplicationController
         user = Account.authenticate(params[:user_name], params[:password])
         if user
           session[:current_user] = user
-          redirect "/items/"
+          erb :profile_home
         else
           # TODO: improve error msg - something like bootstrap's forms
           @message = "Your password or account information is incorrect"

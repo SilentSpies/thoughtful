@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
 
   ActiveRecord::Base.establish_connection(
     :adapter => "postgresql",
-    :database => "" # TODO: what is the DB name?
+    :database => "thoughtful_db" # TODO: what is the DB name?
   )
 
   # Need to specify the views / public folder!
