@@ -1,0 +1,21 @@
+body {
+  background-color: pink;
+  font-family: 'Raleway', Arial, sans-serif;
+}
+
+header {
+  text-align: center;
+  width: 500px;
+  margin: 100px auto 100px auto;
+  font-size: 5rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 200px;
+  font-size: 1rem;
+}
+
+.col-xs-12 {
+  text-align: center;
+}
