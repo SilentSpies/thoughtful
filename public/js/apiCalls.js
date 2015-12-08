@@ -1,10 +1,30 @@
 $(document).ready(function() {
 
     // Quote API
-    $.ajax(getQuote);
+
+
+    $.when( $.ajax(getQuote) ).done(function() {
+      console.log($('#quote-text').text());
+      // getting rid of the surrounding quotation marks
+      var quoteString = $('#quote-text').text()
+      var quoteArray = quoteString.slice(1,quoteString.length)
+      quoteArray = quoteArray.slice(0,quoteString.length - 2).split(" ");
+      console.log(quoteArray);
+      // concatinate words 4 letters long or greater
+      var searchPhrase = [];
+      for (var i=0; i < quoteArray.length; i++) {
+        if (quoteArray[i].length > 3) {
+          searchPhrase.push(quoteArray[i]);
+        }
+      }
+
+
+      // searchPhrase.join("&");
+      console.log(searchPhrase);
+    });
 
     // Pixabay API
-    $.ajax(getPixabay);
+    // $.ajax(getPixabay);
 
 
 
