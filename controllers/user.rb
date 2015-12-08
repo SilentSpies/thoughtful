@@ -80,7 +80,11 @@ class UserController < ApplicationController
       redirect "/"
     end
 
-
+    post "/logout" do
+      authorization_check
+      session[:current_user] = nil
+      redirect "/"
+    end
 
     # profile_view (main page where quote / images will be)
     get "/profile_home" do

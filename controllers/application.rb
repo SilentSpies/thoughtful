@@ -43,10 +43,5 @@ class ApplicationController < Sinatra::Base
   end
 
 
-  # get ENV variables
-  def get_ENV_variable_string(variable_name)
-    return ENV[variable_name];
-  end
-
 
 end # END CLASS
