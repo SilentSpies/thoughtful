@@ -1,4 +1,9 @@
 body {
+  background-image: url(/img/background/nature-1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
   background-color: pink;
   font-family: 'Raleway', Arial, sans-serif;
 }
@@ -6,16 +11,31 @@ body {
 header {
   text-align: center;
   width: 500px;
-  margin: 100px auto 100px auto;
+  margin: 150px auto 10px auto;
   font-size: 5rem;
+  color: white;
 }
 
-footer {
+#content {
   text-align: center;
-  margin-top: 200px;
-  font-size: 1rem;
+  color: white;
+}
+
+.profile_quote {
+  text-align: center;
+  color: inherit;
+  font-size: 2rem;
+  letter-spacing: 1px;
 }
 
 .col-xs-12 {
   text-align: center;
+  color: white;
+}
+
+.foot {
+  text-align: center;
+  margin: 200px 0 0 0;
+  font-size: 1rem;
+  color: white;
 }
