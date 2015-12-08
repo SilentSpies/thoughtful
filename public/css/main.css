@@ -11,7 +11,7 @@ body {
 header {
   text-align: center;
   width: 500px;
-  margin: 100px auto 100px auto;
+  margin: 150px auto 10px auto;
   font-size: 5rem;
   color: white;
 }
@@ -19,14 +19,22 @@ header {
 .main-logo {
 }
 
-.submit-button {
+/*.submit-button {
   color: black;
   background-color: rgba(218, 241, 233, 0.8)
-}
+}*/
+
+/*.profile_image_container {
+  text-align: center;
+}*/
 
 .col-xs-12 {
   text-align: center;
   color: white;
+}
+
+.button-primary {
+  text-align: center;
 }
 
 .foot {
