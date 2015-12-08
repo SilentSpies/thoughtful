@@ -3,22 +3,20 @@ $(document).ready(function() {
     // Quote API
     $.ajax(getQuote);
 
+    // Pixabay API
+    $.ajax(getPixabay);
+
 
 
 }); // end of READY
 
 
 
-
 // Quote API Call
 var getQuote = {
     type: 'get',
-    url: ' https://theysaidso.p.mashape.com/quote?',
+    url: '/api/quotes',
     dataType: 'json',
-    data: {
-        category: 'inspire',
-        maxlength: 500
-    },
     success: function(data) {
         console.log("success");
         console.log(data);
@@ -27,7 +25,7 @@ var getQuote = {
 
         $('.profile_quote').append("<blockquote>");
         $("blockquote").append("<p id='quote-text'>");
-        $("#quote-text").text(data.contents.quote);
+        $("#quote-text").text("\"" + data.contents.quote + "\"");
         $("blockquote").append("<footer id='author'>");
         $("#author").text(data.contents.author);
 
@@ -35,8 +33,57 @@ var getQuote = {
     error: function(error) {
         console.log("error")
         console.log(error);
-    },
-    beforeSend: function(xhr) {
-        xhr.setRequestHeader("X-Mashape-Authorization", "bgcO2dfgzJmshatc421SqDRW9ICYp1fV3e4jsnqBWv54XiICNP"); // Enter here your Mashape key
     }
+    // beforeSend: function(xhr) {
+    //     xhr.setRequestHeader("X-Mashape-Authorization", process.env["QUOTE_API_KEY"]); // Enter here your Mashape key
+    // }
 };
+
+
+
+
+
+// Using pixabay.com api
+// https://pixabay.com/api/docs/
+var getPixabay = {
+  type: "GET",
+  url: "/api/pixabay",
+  dataType: 'json',
+  success: function(data) {
+      var data = data;
+      var counter = 0;
+      console.table(data);
+      $('body').append("<div id='dvImages'>");
+      // $('p').append(data.name);
+      $.each( data.hits, function( i, item ) {
+        counter += 1;
+        console.log(item.previewHeight);
+        // this method doesn't allow specific size selection! boo
+        // A work around is to call a lot of images
+        // and only append those that fit the size requirement.
+        // But you don't know if you will get enough images...
+        if (item.previewHeight >= 90 && item.previewHeight <= 100) {
+        console.log(item.previewURL);
+        var img = $("<img />");
+        img.attr("src", item.previewURL).appendTo(".profile_image_row");
+        if (counter == 4) return false;
+        }
+      });
+  },
+  fail: function(error) {
+      console.log("Something has gone wrong below");
+      console.log(error);
+      console.log("Something has gone wrong ^");
+  }
+};
+
+
+
+
+
+
+
+
+function pickAElement(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}

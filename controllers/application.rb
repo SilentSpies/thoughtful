@@ -3,6 +3,9 @@ class ApplicationController < Sinatra::Base
   require "bundler"
   Bundler.require
 
+  require "dotenv"
+  Dotenv.load
+
   ActiveRecord::Base.establish_connection(
     :adapter => "postgresql",
     :database => "thoughtful_db" # TODO: what is the DB name?
@@ -37,6 +40,12 @@ class ApplicationController < Sinatra::Base
     else
       return true
     end
+  end
+
+
+  # get ENV variables
+  def get_ENV_variable_string(variable_name)
+    return ENV[variable_name];
   end
 
 

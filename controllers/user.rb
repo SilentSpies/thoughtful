@@ -8,6 +8,9 @@ class UserController < ApplicationController
     get "/" do
       authorization_check
       @user_name = session[:current_user].user_name
+      @PIXABAY_API_KEY = ENV["PIXABAY_API_KEY"]
+      puts @PIXABAY_API_KEY
+      @QUOTE_API_KEY = ENV["QUOTE_API_KEY"]
       erb :profile_home
     end
 

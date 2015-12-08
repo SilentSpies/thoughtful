@@ -22,4 +22,5 @@ class HomeController < ApplicationController
     erb :not_found
   end
 
+
 end # CLASS END
