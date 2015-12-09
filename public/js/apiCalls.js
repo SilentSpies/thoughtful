@@ -53,7 +53,7 @@ $(document).ready(function() {
               // But you don't know if you will get enough images...
               if (item.previewHeight >= 95 && item.previewHeight <= 100) {
               // console.log(item.previewURL);
-              var img = $("<div class='slide'><img /></div>");
+              var img = $("<div class='slide'><img id="counter" /></div>");
               $('img').attr("src", item.previewURL).appendTo(".profile_image_row");
               if (counter >= 11) return false;
               }
