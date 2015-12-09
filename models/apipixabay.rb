@@ -1,5 +1,5 @@
 
-class Pixabay
+class APIPixabay
   require "httparty"
   include HTTParty
   base_uri 'https://pixabay.com'

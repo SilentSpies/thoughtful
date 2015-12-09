@@ -5,8 +5,6 @@ console.log("^ searchPhrase");
 $(document).ready(function() {
 
     // Quote API
-
-
     $.when( $.ajax(getQuote) ).done(function() {
       console.log($('#quote-text').text());
       // getting rid of the surrounding quotation marks
@@ -32,7 +30,7 @@ $(document).ready(function() {
         }
       }
 
-
+      // Pixabay (Image) API
       var searchPhraseStr = searchPhrase.join("-");
       console.log(searchPhraseStr);
 
@@ -67,29 +65,26 @@ $(document).ready(function() {
             console.log(error);
             console.log("Something has gone wrong ^");
         }
-      });
-      console.log("AJAX should have been called");
-    });
+      }); // END IMAGE API CALL
 
-    // Pixabay API
-    // $.ajax(getPixabay);
-    console.log("out of the when statement");
-    searchPhrase = "cat";
-    console.log(searchPhrase);
-    console.log("^ searchPhrase");
-  // $.ajax(getPixabaySearchTerms);
-  console.log("AJAX should have been called AGAIN");
+      var getQuoteText = document.querySelector("#quote-text");
+      var getAuthorText = document.querySelector("#author");
+      var btnFavorite = document.querySelector("#btn_favorite");
+      var setQuoteText = document.querySelector("#setQuote");
+      var setAuthorText = document.querySelector("#setAuthor");
+
+      setQuoteText.value = $("#quote-text").text();
+      setAuthorText.value = $("#author").text();
 
 
 
+    }); // END WHEN
 
 
 
 
 }); // end of READY
 
-console.log(searchPhrase);
-console.log("^ searchPhrase after doc ready");
 
 
 // Quote API Call
@@ -131,39 +126,6 @@ var getPixabay = {
       var counter = 0;
       // console.table(data);
       $('body').append("<div id='dvImages'>");
-      // $('p').append(data.name);
-      $.each( data.hits, function( i, item ) {
-        counter += 1;
-        // console.log(item.previewHeight);
-        // this method doesn't allow specific size selection! boo
-        // A work around is to call a lot of images
-        // and only append those that fit the size requirement.
-        // But you don't know if you will get enough images...
-        if (item.previewHeight >= 90 && item.previewHeight <= 100) {
-        // console.log(item.previewURL);
-        var img = $("<img />");
-        img.attr("src", item.previewURL).appendTo(".profile_image_row");
-        if (counter >= 11) return false;
-        }
-
-      });
-  },
-  fail: function(error) {
-      console.log("Something has gone wrong below");
-      console.log(error);
-      console.log("Something has gone wrong ^");
-  }
-};
-
-var getPixabaySearchTerms = {
-  type: "GET",
-  url: "/api/pixabaySearch?search=" + searchPhrase,
-  dataType: 'json',
-  success: function(data) {
-      var data = data;
-      var counter = 0;
-      // console.table(data);
-      // $('body').append("<div id='dvImages'>");
       // $('p').append(data.name);
       $.each( data.hits, function( i, item ) {
         counter += 1;
