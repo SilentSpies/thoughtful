@@ -8,30 +8,25 @@
         <img id="profile_pic" src="<%= @image_base64 %>" alt="" />
         </div>
         <div id="content">
-        <article class="profile_quote">
-        </article>
-        <form class="" action="/favorite/quote" method="post">
-        <input id="setQuote" type="hidden" name="quote" value="">
-        <input id="setAuthor" type="hidden" name="author" value="">
-        <input id="btn_favorite" class="button-primary" type="submit" name="favorite_quote" value="Favorite">
-      </form></div>
-<div class="profile_image_row">
-</div>
-<br>
-<br>
-<<<<<<< HEAD
-        <form action="/users/logout" method="post">
-        <input class="button-primary" id="btn_login" type="submit" value="Logout">
-        </form>
+          <article class="profile_quote">
+          </article>
+          <form class="" action="/favorite/quote" method="post">
+            <input id="setQuote" type="hidden" name="quote" value="">
+            <input id="setAuthor" type="hidden" name="author" value="">
+            <input id="btn_favorite" class="button-primary" type="submit" name="favorite_quote" value="Favorite">
+          </form>
         </div>
+        <div class="profile_image_row">
+        </div>
+<br>
+<br>
+      <form action="/users/logout" method="get">
+        <input class="button-primary" id="btn_login" type="submit" value="Logout">
+      </form>
+      <form action="/favorite/quotes" method="post">
+        <input class="button-primary" id="btn_favorite_view" type="submit" value="View Favorites">
+      </form>
+      
     </div>
-=======
-<form action="/users/logout" method="post">
-  <input class="button-primary" id="btn_login" type="submit" value="Logout">
-</form>
-<form action="/favorite/quotes" method="post">
-  <input class="button-primary" id="btn_favorite_view" type="submit" value="View Favorites">
-</form>
-
->>>>>>> 501d464446bc0f2685c1b0d4d1e5cf3b8a6b2940
+  </div>
 </div>

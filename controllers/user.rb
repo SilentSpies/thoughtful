@@ -88,12 +88,14 @@ class UserController < ApplicationController
 
     # profile_view (main page where quote / images will be)
     get "/profile_home" do
-      current_user = Account.find_by(user_name: session[:current_user].user_name)
-      profile_image = ProfileImage.find_by(user_id: current_user.id)
+      if does_user_exist(params[:user_name]) == true
+        current_user = Account.find_by(user_name: session[:current_user].user_name)
+        profile_image = ProfileImage.find_by(user_id: current_user.id)
 
-      @user_name = current_user.user_name.capitalize
-      @image_base64 = profile_image.image_base64
-      erb :profile_home
+        @user_name = current_user.user_name.capitalize
+        @image_base64 = profile_image.image_base64
+        erb :profile_home
+      end
     end
 
     post "/profile_search" do
