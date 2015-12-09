@@ -77,13 +77,13 @@ class UserController < ApplicationController
     get "/logout" do
       authorization_check
       session[:current_user] = nil
-      redirect "/"
+      redirect "/users/login"
     end
 
     post "/logout" do
       authorization_check
       session[:current_user] = nil
-      redirect "/"
+      redirect "/users/login"
     end
 
     # profile_view (main page where quote / images will be)
@@ -94,6 +94,20 @@ class UserController < ApplicationController
       @user_name = current_user.user_name.capitalize
       @image_base64 = profile_image.image_base64
       erb :profile_home
+    end
+
+    post "/profile_search" do
+      searched_user = Account.find_by(user_name: params[:user_name])
+      profile_image = ProfileImage.find_by(user_id: searched_user.id)
+
+      @user_name = searched_user.user_name.capitalize
+      @image_base64 = profile_image.image_base64
+
+      # grab the current_user id
+      @user = searched_user.id
+      # get all items tied to user id from DB
+      @quotes = Quote.where(user_id: @user)
+      erb :profile_search
     end
 
 end # CLASS END

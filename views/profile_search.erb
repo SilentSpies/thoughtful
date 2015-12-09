@@ -1,6 +1,6 @@
 <div class="col-xs-12">
   <div class="profile_image_container">
-    <h3>Hello, <%= @user_name %>!</h3>
+    <h3><%= @user_name %>'s Favorites</h3>
     <img id="profile_pic" src="<%= @image_base64 %>" alt="" />
   </div>
 </div>
@@ -27,6 +27,6 @@
     <input class="button-primary" type="submit" value="Profile Home">
   </form>
   <form action="/users/profile_search" method="post">
-    <input class="button-primary" type="search" name="user_name" placeholder="Username">
+    <input class="button-primary" type="search" value="Username">
   </form>
 </div>
