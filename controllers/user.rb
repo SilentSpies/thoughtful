@@ -8,10 +8,7 @@ class UserController < ApplicationController
     get "/" do
       authorization_check
       @user_name = session[:current_user].user_name
-      @PIXABAY_API_KEY = ENV["PIXABAY_API_KEY"]
-      puts @PIXABAY_API_KEY
-      @QUOTE_API_KEY = ENV["QUOTE_API_KEY"]
-      erb :profile_home
+      redirect "/users/profile_home"
     end
 
 
@@ -36,11 +33,14 @@ class UserController < ApplicationController
       # TODO: update this depending on the DB table!
       if (params[:user_email] != "" && params[:user_name] != "" && params[:password] != "")
         # make the user name
-        user = Account.create(user_email: params[:user_email], user_name: params[:user_name], password: params[:password])
+        user = Account.create(user_email: params[:user_email], user_name: params[:user_name], full_name: params[:full_name], password: params[:password] )
         # save into session control
         session[:current_user] = user
+        # cookie can't hold the image base64, so put it in a separate table
+        current_user = Account.find_by(user_name: session[:current_user].user_name)
+        profile_image = ProfileImage.create(user_id: current_user.id, image_base64: params[:image_base64])
         # force the URL to the items root to show list
-        erb :profile_home
+        redirect "/users/profile_home"
       else
         @message = "All fields must have a value"
         erb :register
@@ -60,7 +60,7 @@ class UserController < ApplicationController
         user = Account.authenticate(params[:user_name], params[:password])
         if user
           session[:current_user] = user
-          erb :profile_home
+          redirect "/users/profile_home"
         else
           # TODO: improve error msg - something like bootstrap's forms
           @message = "Your password or account information is incorrect"
@@ -88,6 +88,11 @@ class UserController < ApplicationController
 
     # profile_view (main page where quote / images will be)
     get "/profile_home" do
+      current_user = Account.find_by(user_name: session[:current_user].user_name)
+      profile_image = ProfileImage.find_by(user_id: current_user.id)
+
+      @user_name = current_user.user_name
+      @image_base64 = profile_image.image_base64
       erb :profile_home
     end
 

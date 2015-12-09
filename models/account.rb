@@ -1,6 +1,7 @@
 class Account < ActiveRecord::Base
   # DB relationship
   # has_many :items
+  has_one :ProfileImage
 
   include BCrypt
 
