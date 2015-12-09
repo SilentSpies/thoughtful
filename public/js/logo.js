@@ -4,7 +4,9 @@ $(document).ready(function() {
   // add a random image to the css background
   $("body").css("background-image", "url(/img/background/"+pickElement(backgroundImages)+")");
   // append the logo
-  $('.main-logo').append('<img id="main-logo-image" src="/img/logo/thoughtful-logo-4.png">');
+  // $('.main-logo').append('<img id="main-logo-image" src="/img/logo/thoughtful-logo-4.png">');
+  // $('.main-logo').append('<img id="main-logo-image" src="/img/logo/thoughtful-logo-4.png">');
+  $('.main-logo').append('<picture><source srcset="/img/logo/thoughtful-logo-4.png" media="(min-width: 600px)"><img src="/img/logo/thoughtful-logo-4-small.png" alt="logo"></picture>');
   // add a click event for the logo
   $('#main-logo-image').bind('click', function() {
     window.location.href = '/';
