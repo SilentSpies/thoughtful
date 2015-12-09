@@ -1,15 +1,14 @@
 <div class="container">
   <div class="row">
+    <div class="twelve columns" id="login-column">
 
-    <div class="col-xs-12">
       <!-- if there is a message -->
       <% if @message %>
           <!-- print that message -->
           <p class="text-center" id="warning-message"><strong><%= @message %></strong></p>
       <% end %>
-    </div>
 
-    <div class="col-xs-12">
+
       <form class="" action="/users/register" method="post">
         <input class="" type="text" name="user_name" placeholder="Username"><br>
         <input class="" type="password" name="password" placeholder="Password"><br>
@@ -21,7 +20,6 @@
         <input class="button-primary" id="btn_register" type="submit" value="Submit">
       </form>
     </div>
-
   </div>
 </div>
 

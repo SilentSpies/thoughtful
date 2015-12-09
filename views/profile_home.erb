@@ -1,25 +1,27 @@
 <!-- link generation script -->
-<script src="/js/apiCalls.js" charset="utf-8"></script>
-<div class="col-xs-12">
-<div class="profile_image_container">
-<h3>Hello, <%= @user_name %>!</h3>
-<img id="profile_pic" src="<%= @image_base64 %>" alt="" />
-</div>
-</div>
-<div id="content">
-<article class="profile_quote">
-</article>
-<form class="" action="/favorite/quote" method="post">
-  <input id="setQuote" type="hidden" name="quote" value="">
-  <input id="setAuthor" type="hidden" name="author" value="">
-  <input id="btn_favorite" type="submit" name="favorite_quote" value="Favorite">
-</form>
+<div class="container">
+  <div class="row">
+    <div class="twelve columns" id="login-column">
+      <script src="/js/apiCalls.js" charset="utf-8"></script>
+      <div class="profile_image_container">
+        <h3>Hello, <%= @user_name %>!</h3>
+        <img id="profile_pic" src="<%= @image_base64 %>" alt="" />
+        </div>
+        <div id="content">
+        <article class="profile_quote">
+        </article>
+        <form class="" action="/favorite/quote" method="post">
+        <input id="setQuote" type="hidden" name="quote" value="">
+        <input id="setAuthor" type="hidden" name="author" value="">
+        <input id="btn_favorite" class="button-primary" type="submit" name="favorite_quote" value="Favorite">
+      </form></div>
 <div class="profile_image_row">
 </div>
 <br>
 <br>
-<form action="/users/logout" method="post">
-  <input class="button-primary" id="btn_login" type="submit" value="Logout">
-</form>
-
+        <form action="/users/logout" method="post">
+        <input class="button-primary" id="btn_login" type="submit" value="Logout">
+        </form>
+        </div>
+    </div>
 </div>

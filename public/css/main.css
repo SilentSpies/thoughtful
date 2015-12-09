@@ -11,12 +11,17 @@ body {
 header {
   text-align: center;
   width: 500px;
-  margin: 150px auto 10px auto;
+  margin: 50px auto 10px auto;
   font-size: 5rem;
   color: white;
 }
 
 #content {
+  text-align: center;
+  color: white;
+}
+
+#login-column {
   text-align: center;
   color: white;
 }
@@ -44,10 +49,10 @@ header {
   letter-spacing: 1px;
 }
 
-.col-xs-12 {
+/*.col-xs-12 {
   text-align: center;
   color: white;
-}
+}*/
 
 .foot {
   text-align: center;
