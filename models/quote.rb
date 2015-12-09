@@ -6,7 +6,7 @@ class Quotes
   headers "Accept" => "application/json"
 
   def initialize
-    quoteCategories = ["courage", "inspirational", "motivational", "hope", "dream", "strength", "success", "beauty", "imagination"]
+    quoteCategories = ["courage", "inspirational", "motivational", "hope", "dream", "strength", "success", "beauty"]
 
     @options = { query: {category: quoteCategories.sample, maxlength: 500} }
     # @headers = { headers: {
