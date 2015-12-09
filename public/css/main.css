@@ -21,6 +21,13 @@ header {
   color: white;
 }
 
+/*NOTE: Responsive Header Image*/
+/*.main-logo img {
+ margin-bottom: 50px;
+ max-width: 100%;
+ height: auto;
+}*/
+
 .profile_quote {
   text-align: center;
   color: inherit;
