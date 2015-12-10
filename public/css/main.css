@@ -35,6 +35,10 @@ h3 {
   color: white;
 }
 
+#warning-message{
+  font-size: 1.0rem;
+}
+
 #profile_pic {
   padding: 0px;
   width: 100px;
@@ -44,6 +48,36 @@ h3 {
   border-radius: 50px;
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
+}
+
+#btn-delete {
+  background: #ff1e00;
+  background-image: -webkit-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: -moz-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: -ms-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: -o-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: linear-gradient(to bottom, #ff1e00, #e01c03);
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 5px 5px 5px 5px;
+  text-decoration: none;
+  line-height: normal;
+  height: 30px;
+  width: 30px;
+}
+
+#btn-delete:hover {
+  background: #ff1e00;
+  background-image: -webkit-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: -moz-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: -ms-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: -o-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: linear-gradient(to bottom, #ff1e00, #e01c03);
+  text-decoration: none;
 }
 
 .container {
@@ -69,33 +103,6 @@ h3 {
     font-weight: bold;
     padding: 3px 8px;
     border-radius: 3px;
-}
-
-.btn-delete{
-  background: #ff1e00;
-  background-image: -webkit-linear-gradient(top, #ff1e00, #e01c03);
-  background-image: -moz-linear-gradient(top, #ff1e00, #e01c03);
-  background-image: -ms-linear-gradient(top, #ff1e00, #e01c03);
-  background-image: -o-linear-gradient(top, #ff1e00, #e01c03);
-  background-image: linear-gradient(to bottom, #ff1e00, #e01c03);
-  -webkit-border-radius: 60;
-  -moz-border-radius: 60;
-  border-radius: 60px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 14px;
-  padding: 5px 10px 5px 10px;
-  text-decoration: none;
-}
-
-.btn-delete:hover {
-  background: #ff1e00;
-  background-image: -webkit-linear-gradient(top, #ff1e00, #e01c03);
-  background-image: -moz-linear-gradient(top, #ff1e00, #e01c03);
-  background-image: -ms-linear-gradient(top, #ff1e00, #e01c03);
-  background-image: -o-linear-gradient(top, #ff1e00, #e01c03);
-  background-image: linear-gradient(to bottom, #ff1e00, #e01c03);
-  text-decoration: none;
 }
 
 .profile_quote {

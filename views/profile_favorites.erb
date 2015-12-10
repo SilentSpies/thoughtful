@@ -2,13 +2,20 @@
   <div class="row">
     <div class="twelve columns">
       <nav>
-        <form class="" method="post">
+        <form class="" method="post" style="margin-bottom: 1.0rem;">
           <input formaction="/favorite/quotes" class="button-primary" id="btn_favorite_view" type="submit" value="Favorites">
           <input formaction="/users/profile_home" class="button-primary" type="submit" value="Profile">
           <input formaction="/users/logout" class="button-primary" id="btn_login" type="submit" value="Logout">
           <br>
+        </form>
+        <form class="search_box" method="post" style="margin-bottom: 1.0rem;">
           <input formaction="/users/profile_search" class="button-primary" type="search" name="user_name" placeholder="Search for User" style="text-align:center;">
         </form>
+        <!-- if there is a message -->
+        <% if @message %>
+            <!-- print that message -->
+            <p class="text-center" id="warning-message"><strong><%= @message %></strong></p>
+        <% end %>
       </nav>
       <div class="profile_image_container">
         <h3>Hello, <%= @user_name %>!</h3>
@@ -25,12 +32,12 @@
             <% if quote.author != "" %>
                 <li>
                     <%= quote.quote %> &#8212; <%= quote.author %>
-                    <form class="" method="post" style="display: inline;"><input formaction="/favorite/quote-delete/<%= quote.id %>" class="button-delete" type="submit" value="Delete"></form>
+                    <form class="" method="post" style="display: inline;"><input formaction="/favorite/quote-delete/<%= quote.id %>" id="btn-delete" type="submit" value="x"></form>
                 </li>
             <% else %>
                 <li>
                       <%= quote.quote %> &#8212; Unknown
-                      <form class="" method="post" style="display: inline;"><input formaction="/favorite/quote-delete/<%= quote.id %>" class="button-delete" type="submit" value="Delete"></form>
+                      <form class="" method="post" style="display: inline;"><input formaction="/favorite/quote-delete/<%= quote.id %>" id="btn-delete" type="submit" value="x"></form>
                 </li>
             <% end %>
           <% end %>
