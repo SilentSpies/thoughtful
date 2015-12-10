@@ -7,15 +7,12 @@ $(document).ready(function() {
     // Quote API
     $.when( $.ajax(getQuote) ).done(function() {
       console.log($('#quote-text').text());
-      // getting rid of the surrounding quotation marks
-      // var quoteString = $('#quote-text').text();
+      // get rid of things we don't want...
       var quoteString= cleanUpString($('#quote-text').text());
       console.log(quoteString);
-      // var punctuationless = quoteString.replace(/[.,-\/#!$%\^&\*;:{}=\-_`'"~()]/g,"");
-      // var finalString = punctuationless.replace(/\s{2,}/g," ");
       var quoteArray = quoteString.split(" ");
+      // remove duplicates
       quoteArray = unique(quoteArray);
-      // quoteArray = quoteArray.slice(0,quoteString.length - 2).split(" ");
       console.log(quoteArray);
       // sort array so longer words are first
       quoteArray = quoteArray.sort(function(a, b){
@@ -23,7 +20,7 @@ $(document).ready(function() {
       });
       // concatinate words 4 letters long or greater
       searchPhrase = [];
-      var charTotal = 0; // must be less than 50
+      var charTotal = 0; // must be less than 40 (max search length is 100)
       for (var i=0; i < quoteArray.length; i++) {
         if (quoteArray[i].length > 3) {
           charTotal += quoteArray[i].length + 1
@@ -45,25 +42,10 @@ $(document).ready(function() {
         success: function(data) {
             var counter = 0;
             console.table(data);
-            // $('body').append("<div id='dvImages'>");
-            // $('p').append(data.name);
             $.each( data.hits, function( i, item ) {
               counter += 1;
-              // console.log(item.previewHeight);
-              // this method doesn't allow specific size selection! boo
-              // A work around is to call a lot of images
-              // and only append those that fit the size requirement.
-              // But you don't know if you will get enough images...
-              // if (item.previewHeight >= 0 && item.previewHeight <= 3000) {
-              // console.log(item.previewURL);
-              // $("<div class='slide'><img id=" + counter + " /></div>").appendTo(".slider1");
-              // $("#"+counter).attr("src", item.webformatURL);
-              // var img = $("<li><img id='"+counter+"'></li>").appendTo(".profile_image_row");
-              // $("#"+counter).attr("src", item.previewURL);
               $("<li class='slide'><img src='" + item.webformatURL + "'></li>").appendTo(".profile_image_row");
-              if (counter >= 6) return false;
-            // }
-
+              if (counter >= 6) return false; // only bring up X pictures
             });
         },
         error: function(request, status, err) {
@@ -87,9 +69,6 @@ $(document).ready(function() {
 
       })).done(function() { // END IMAGE API CALL
 
-      var getQuoteText = document.querySelector("#quote-text");
-      var getAuthorText = document.querySelector("#author");
-      var btnFavorite = document.querySelector("#btn_favorite");
       var setQuoteText = document.querySelector("#setQuote");
       var setAuthorText = document.querySelector("#setAuthor");
 
