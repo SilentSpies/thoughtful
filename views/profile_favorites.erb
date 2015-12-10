@@ -25,13 +25,13 @@
             <% if quote.author != "" %>
               <form class="" action="index.html" method="post">
                 <li><%= quote.quote %> &#8212; <%= quote.author %>
-                    <input formaction="/favorite/quote-delete/<%= quote.id %>" class="button-delete" type="submit" value="Delete">
+                    <input formaction="/favorite/quote-delete/<%= quote.id %>" class="btn-delete" type="submit" value="X">
                 </li>
               </form>
             <% else %>
               <form class="" action="index.html" method="post">
                 <li><%= quote.quote %> &#8212; Unknown
-                    <input formaction="/favorite/quote-delete/<%= quote.id %>" class="button-delete" type="submit" value="Delete">
+                    <input formaction="/favorite/quote-delete/<%= quote.id %>" class="btn-delete" type="submit" value="X">
                 </li>
               </form>
             <% end %>
