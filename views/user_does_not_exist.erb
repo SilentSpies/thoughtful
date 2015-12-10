@@ -2,22 +2,21 @@
 <div class="container">
   <div class="row">
     <div class="twelve columns" id="login-column">
+      <nav>
+        <form class="" action="index.html" method="post">
+          <input formaction="/favorite/quotes" class="button-primary" id="btn_favorite_view" type="submit" value="Favorites">
+          <input formaction="/users/profile_home" class="button-primary" type="submit" value="Profile">
+          <input formaction="/users/logout" class="button-primary" id="btn_login" type="submit" value="Logout">
+          <br>
+          <input formaction="/users/profile_search" class="button-primary" type="search" name="user_name" placeholder="Search for User" style="text-align:center;">
+        </form>
+      </nav>
       <div class="content">
         <h5>Uh oh...SpaghettiOs&#8482;</h5>
         <h6>That user name doesn't seem to exist!</h6>
       </div>
 <br>
 <br>
-      <form action="/users/logout" method="get">
-        <input class="button-primary" id="btn_login" type="submit" value="Logout">
-      </form>
-      <form action="/users/profile_home" method="get">
-        <input class="button-primary" type="submit" value="Profile Home">
-      </form>
-      <form action="/users/profile_search" method="post">
-        <input class="button-primary" type="search" value="Username">
-      </form>
-
     </div>
   </div>
 </div>

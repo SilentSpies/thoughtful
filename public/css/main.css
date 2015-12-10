@@ -17,6 +17,10 @@ header {
   color: white;
 }
 
+nav, input {
+  display: inline;
+}
+
 h3 {
   color: white;
 }

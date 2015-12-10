@@ -95,6 +95,13 @@ class UserController < ApplicationController
       @image_base64 = get_current_user_profile_image.image_base64
       erb :profile_home
     end
+    post "/profile_home" do
+      authorization_check
+      # set variables for erb display
+      @user_name = get_current_user.user_name.capitalize
+      @image_base64 = get_current_user_profile_image.image_base64
+      erb :profile_home
+    end
 
     # a searched user will show their favorites
     post "/profile_search" do
