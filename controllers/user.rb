@@ -55,6 +55,47 @@ class UserController < ApplicationController
     end
 
 
+    # due similarity of registration, keeping it near it
+    get "/edit_profile" do
+      @user = get_current_user
+      erb :edit_profile
+    end
+    post "/edit_profile" do
+
+      # if the form has been filled out properly
+      # TODO: update this depending on the DB table!
+      if (params[:user_email] != "" && params[:user_name] != "" && params[:password] != "")
+        # make the user name
+        # user = Account.create(user_email: params[:user_email], user_name: params[:user_name], full_name: params[:full_name], password: params[:password] )
+
+        # save into session control
+        @user = get_current_user
+        @user.user_email = params[:user_email]
+        @user.user_name = params[:user_name]
+        @user.full_name = params[:full_name]
+        @user.password = params[:password]
+        @user.save
+
+        if params[:image_base64] != ""
+          @profile_image = ProfileImage.find_by(user_id: get_current_user.id)
+          @profile_image.image_base64 = params[:image_base64]
+          @profile_image.save
+        else
+          tempImage = ProfileImage.find_by(user_id: 0).image_base64
+          @profile_image = ProfileImage.find_by(user_id: get_current_user.id)
+          @profile_image.image_base64 = tempImage
+          @profile_image.save
+        end
+
+        # force the URL to the profile home
+        redirect "/users/profile_home"
+      else
+        @user = get_current_user
+        @message = "All fields must have a value"
+        erb :register
+      end
+    end
+
 
     # user login
     get "/login" do
