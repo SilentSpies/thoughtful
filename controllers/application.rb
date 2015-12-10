@@ -49,6 +49,11 @@ class ApplicationController < Sinatra::Base
   end
 
 
+  # get the current user profile image
+  def get_current_user_profile_image
+    return ProfileImage.find_by(user_id: get_current_user.id)
+  end
+
 
 
 end # END CLASS

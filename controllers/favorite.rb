@@ -22,5 +22,13 @@ class FavoriteController < ApplicationController
     erb :profile_favorites
   end
 
+  post "/quote/delete/:id" do
+    # find the item row by id and destroy (remove from DB)
+    @quote = Quote.find(params[:id])
+    @quote.destroy
+    # show the view
+    redirect "/quotes"
+  end
+
 
 end # CLASS END

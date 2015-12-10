@@ -11,12 +11,18 @@
       <h3>Favorite Quotes</h3>
 
       <article class="profile_quote">
-        <ol>
+        <ol class="favorite-list">
           <% @quotes.each do |quote| %>
             <% if quote.author != "" %>
-              <li><%= quote.quote %> &#8212; <%= quote.author %></li>
+              <li><%= quote.quote %> &#8212; <%= quote.author %>
+                <form action="/favorite/delete/<%= quote.id %>" method="get">
+                      <input class="button-primary" type="submit" value="Remove">
+                </form></li>
             <% else %>
-              <li><%= quote.quote %> &#8212; Unknown</li>
+              <li><%= quote.quote %> &#8212; Unknown
+                <form action="/favorite/quote/delete/<%= quote.id %>" method="get">
+                    <input class="button-primary" type="submit" value="Remove">
+                </form></li>
             <% end %>
             <!-- <td><a class="button-link" href='/items/update/<%= quote.id %>'>Update</a></td>
             <td><a class="button-link" href='/items/destroy/<%= quote.id %>'>Destroy</a></td> -->

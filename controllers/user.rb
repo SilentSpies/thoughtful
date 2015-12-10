@@ -37,7 +37,6 @@ class UserController < ApplicationController
         # save into session control
         session[:current_user] = user
         # cookie can't hold the image base64, so put it in a separate table
-        # current_user = Account.find_by(user_name: session[:current_user].user_name)
         profile_image = ProfileImage.create(user_id: get_current_user.id, image_base64: params[:image_base64])
         # force the URL to the items root to show list
         redirect "/users/profile_home"
@@ -86,16 +85,14 @@ class UserController < ApplicationController
       redirect "/users/login"
     end
 
+
+
     # profile_view (main page where quote / images will be)
     get "/profile_home" do
       authorization_check
-      # set the current user
-      # current_user = Account.find_by(user_name: session[:current_user].user_name)
-      # get their profile image (different table)
-      profile_image = ProfileImage.find_by(user_id: get_current_user.id)
       # set variables for erb display
       @user_name = get_current_user.user_name.capitalize
-      @image_base64 = profile_image.image_base64
+      @image_base64 = get_current_user_profile_image.image_base64
       erb :profile_home
     end
 
@@ -114,6 +111,8 @@ class UserController < ApplicationController
         @quotes = Quote.where(user_id: @user)
         erb :profile_search
       else
+        @user_name = get_current_user.user_name.capitalize
+        @image_base64 = get_current_user_profile_image.image_base64
         @message = "The username: " + params[:user_name] + " doesn't exist!"
         erb :profile_home
       end
