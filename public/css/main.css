@@ -46,6 +46,27 @@ h3 {
   text-align: center;
 }
 
+.favorite-list {
+    margin-left: 0;
+    padding-right: 0;
+    list-style-type: none;
+}
+
+.favorite-list li {
+    counter-increment: step-counter;
+}
+
+.favorite-list li::before {
+    content: counter(step-counter);
+    margin-right: 5px;
+    font-size: 80%;
+    background-color: #33c3f0;
+    color: white;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 3px;
+}
+
 .profile_quote {
   text-align: center;
   color: inherit;
