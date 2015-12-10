@@ -1,17 +1,20 @@
-var searchPhrase = "";
-console.log(searchPhrase);
-console.log("^ searchPhrase");
 
 $(document).ready(function() {
+
+
+
 
     // Quote API
     $.when( $.ajax(getQuote) ).done(function() {
       console.log($('#quote-text').text());
       // getting rid of the surrounding quotation marks
-      var quoteString = $('#quote-text').text()
-      var punctuationless = quoteString.replace(/[.,-\/#!$%\^&\*;:{}=\-_`'"~()]/g,"");
-      var finalString = punctuationless.replace(/\s{2,}/g," ");
-      var quoteArray = finalString.split(" ");
+      // var quoteString = $('#quote-text').text();
+      var quoteString= cleanUpString($('#quote-text').text());
+      console.log(quoteString);
+      // var punctuationless = quoteString.replace(/[.,-\/#!$%\^&\*;:{}=\-_`'"~()]/g,"");
+      // var finalString = punctuationless.replace(/\s{2,}/g," ");
+      var quoteArray = quoteString.split(" ");
+      quoteArray = unique(quoteArray);
       // quoteArray = quoteArray.slice(0,quoteString.length - 2).split(" ");
       console.log(quoteArray);
       // sort array so longer words are first
@@ -24,7 +27,7 @@ $(document).ready(function() {
       for (var i=0; i < quoteArray.length; i++) {
         if (quoteArray[i].length > 3) {
           charTotal += quoteArray[i].length + 1
-          if (charTotal < 45) {
+          if (charTotal < 40) {
             searchPhrase.push(quoteArray[i]);
           }
         }
@@ -34,12 +37,12 @@ $(document).ready(function() {
       var searchPhraseStr = searchPhrase.join("-");
       console.log(searchPhraseStr);
 
-      $.ajax({
+      $.when($.ajax({
         type: "GET",
         url: "/api/pixabaySearch?search=" + searchPhraseStr,
+        timeout: 3000,
         dataType: 'json',
         success: function(data) {
-            var data = data;
             var counter = 0;
             console.table(data);
             // $('body').append("<div id='dvImages'>");
@@ -51,22 +54,38 @@ $(document).ready(function() {
               // A work around is to call a lot of images
               // and only append those that fit the size requirement.
               // But you don't know if you will get enough images...
-              if (item.previewHeight >= 95 && item.previewHeight <= 100) {
+              // if (item.previewHeight >= 0 && item.previewHeight <= 3000) {
               // console.log(item.previewURL);
-              // var img = $("<div class='slide'><img id=" + counter + " /></div>");
-              var img = $("<img/>");
-              img.attr("src", item.previewURL).appendTo(".profile_image_row");
-              if (counter >= 11) return false;
-              }
+              // $("<div class='slide'><img id=" + counter + " /></div>").appendTo(".slider1");
+              // $("#"+counter).attr("src", item.webformatURL);
+              // var img = $("<li><img id='"+counter+"'></li>").appendTo(".profile_image_row");
+              // $("#"+counter).attr("src", item.previewURL);
+              $("<li class='slide'><img src='" + item.webformatURL + "'></li>").appendTo(".profile_image_row");
+              if (counter >= 6) return false;
+            // }
 
             });
+        },
+        error: function(request, status, err) {
+          if (status == "timeout") {
+              // timeout -> reload the page and try again
+              console.log("timeout occured");
+              // window.location.href = '/not_found';
+              //  clearInterval(ajax_call);
+              // window.location.reload(); //make it comment if you don't want to reload page
+          } else {
+              // another error occured
+              alert("error: " + request + status + err);
+          }
         },
         fail: function(error) {
             console.log("Something has gone wrong below");
             console.log(error);
             console.log("Something has gone wrong ^");
         }
-      }); // END IMAGE API CALL
+
+
+      })).done(function() { // END IMAGE API CALL
 
       var getQuoteText = document.querySelector("#quote-text");
       var getAuthorText = document.querySelector("#author");
@@ -77,7 +96,17 @@ $(document).ready(function() {
       setQuoteText.value = $("#quote-text").text();
       setAuthorText.value = $("#author").text();
 
-
+      $('.profile_image_row').bxSlider({
+        slideWidth: 600,
+        minSlides: 1,
+        maxSlides: 1,
+        // auto: true, //auto play enabled (true)
+        autoControls: true,
+        adaptiveHeight: true,
+        mode: 'fade',
+        infiniteLoop: true
+      });
+    });
 
     }); // END WHEN
 
@@ -85,7 +114,6 @@ $(document).ready(function() {
 
 
 }); // end of READY
-
 
 
 // Quote API Call
@@ -150,3 +178,36 @@ var getPixabay = {
       console.log("Something has gone wrong ^");
   }
 };
+
+
+
+function cleanUpString(str) {
+  // first, lets get rid of unhelpful (for searching) words
+  // \b -> word boundary ... gi -> global, ignore case
+  str = str.replace(/\b(about|above|after|along|amid|among|around)\b/gi, '');
+  str = str.replace(/\b(as|at|before|behind|below|beneath|beside)\b/gi, '');
+  str = str.replace(/\b(besides|beyond|but|by|down|during|except)\b/gi, '');
+  str = str.replace(/\b(for|from|in|inside|into|near|of|off|on|onto)\b/gi, '');
+  str = str.replace(/\b(over|past|per|since|than|then|to|under|until)\b/gi, '');
+  str = str.replace(/\b(up|upon|with|within|without|through|between)\b/gi, '');
+  str = str.replace(/\b(out|can't|won't|don't|I|me|we|you|us|our)\b/gi, '');
+  str = str.replace(/\b(have|had|their|there|they|that|when|your)\b/gi, '');
+
+  // next, lets get rid of punctuation
+  str = str.replace(/[.,-\/#!?$%\^&\*;:{}=\-_`'"~()]/g,"");
+  // fix double spaces, if there are any
+  str = str.replace(/\s{2,}/g," ");
+
+  //send it back
+  return str;
+
+}
+
+// source: https://jsfiddle.net/Guffa/Askwb/
+function unique(list) {
+    var result = [];
+    $.each(list, function(i, e) {
+        if ($.inArray(e, result) == -1) result.push(e);
+    });
+    return result;
+}

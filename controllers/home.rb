@@ -15,6 +15,9 @@ class HomeController < ApplicationController
     erb :not_authorized
   end
 
+  get "/not_found" do
+    erb :note_found
+  end
 
 
   # for all pages, if not found show the not_found
