@@ -71,6 +71,33 @@ h3 {
     border-radius: 3px;
 }
 
+.btn-delete{
+  background: #ff1e00;
+  background-image: -webkit-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: -moz-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: -ms-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: -o-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: linear-gradient(to bottom, #ff1e00, #e01c03);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+}
+
+.btn-delete:hover {
+  background: #ff1e00;
+  background-image: -webkit-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: -moz-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: -ms-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: -o-linear-gradient(top, #ff1e00, #e01c03);
+  background-image: linear-gradient(to bottom, #ff1e00, #e01c03);
+  text-decoration: none;
+}
+
 .profile_quote {
   text-align: center;
   color: inherit;
