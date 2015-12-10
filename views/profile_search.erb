@@ -12,13 +12,17 @@
       <h3>Favorite Quotes</h3>
 
       <article class="profile_quote">
-        <ul>
+        <ol class="favorite-list">
           <% @quotes.each do |quote| %>
-            <li><%= quote.quote %> --- <%= quote.author %></li>
+            <% if quote.author != "" %>
+              <li><%= quote.quote %> &#8212; <%= quote.author %></li>
+            <% else %>
+              <li><%= quote.quote %> &#8212; Unknown</li>
+            <% end %>
             <!-- <td><a class="button-link" href='/items/update/<%= quote.id %>'>Update</a></td>
             <td><a class="button-link" href='/items/destroy/<%= quote.id %>'>Destroy</a></td> -->
           <% end %>
-        </ul>
+        </ol>
       </article>
 
       <br>
