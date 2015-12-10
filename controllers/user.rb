@@ -105,6 +105,7 @@ class UserController < ApplicationController
 
     # a searched user will show their favorites
     post "/profile_search" do
+      authorization_check
       if does_user_exist(params[:user_name]) == true
         searched_user = Account.find_by(user_name: params[:user_name])
         profile_image = ProfileImage.find_by(user_id: searched_user.id)

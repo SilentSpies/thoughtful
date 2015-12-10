@@ -54,6 +54,9 @@ class ApplicationController < Sinatra::Base
     return ProfileImage.find_by(user_id: get_current_user.id)
   end
 
+  not_found do
+    erb :not_found
+  end
 
 
 end # END CLASS

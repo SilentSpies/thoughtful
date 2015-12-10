@@ -23,17 +23,15 @@
         <ol class="favorite-list">
           <% @quotes.each do |quote| %>
             <% if quote.author != "" %>
-              <form class="" action="index.html" method="post">
-                <li><%= quote.quote %> &#8212; <%= quote.author %>
-                    <input formaction="/favorite/quote-delete/<%= quote.id %>" class="button-delete" type="submit" value="Delete">
+                <li>
+                    <%= quote.quote %> &#8212; <%= quote.author %>
+                    <form class="" method="post" style="display: inline;"><input formaction="/favorite/quote-delete/<%= quote.id %>" class="button-delete" type="submit" value="Delete"></form>
                 </li>
-              </form>
             <% else %>
-              <form class="" action="index.html" method="post">
-                <li><%= quote.quote %> &#8212; Unknown
-                    <input formaction="/favorite/quote-delete/<%= quote.id %>" class="button-delete" type="submit" value="Delete">
+                <li>
+                      <%= quote.quote %> &#8212; Unknown
+                      <form class="" method="post" style="display: inline;"><input formaction="/favorite/quote-delete/<%= quote.id %>" class="button-delete" type="submit" value="Delete"></form>
                 </li>
-              </form>
             <% end %>
           <% end %>
         </ol>

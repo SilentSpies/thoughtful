@@ -16,7 +16,7 @@ class HomeController < ApplicationController
   end
 
   get "/not_found" do
-    erb :note_found
+    erb :not_found
   end
 
 
