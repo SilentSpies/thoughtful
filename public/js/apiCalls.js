@@ -1,9 +1,6 @@
 
 $(document).ready(function() {
 
-
-
-
     // Quote API
     $.when( $.ajax(getQuote) ).done(function() {
       console.log($('#quote-text').text());

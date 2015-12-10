@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
 
   ActiveRecord::Base.establish_connection(
     :adapter => "postgresql",
-    :database => ENV['DB_name'] 
+    :database => ENV['DB_name']
   )
 
   # Need to specify the views / public folder!
@@ -36,11 +36,18 @@ class ApplicationController < Sinatra::Base
   def authorization_check
     # if there isn't a current session, redirect to login
     if session[:current_user] == nil
-      redirect "/login"
+      redirect "users/login"
     else
       return true
     end
   end
+
+
+  # get the current user information
+  def get_current_user
+    return Account.find_by(user_name: session[:current_user].user_name)
+  end
+
 
 
 

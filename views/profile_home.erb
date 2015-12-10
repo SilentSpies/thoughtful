@@ -7,6 +7,11 @@
       <div class="profile_image_container">
         <h3>Hello, <%= @user_name %>!</h3>
         <img id="profile_pic" src="<%= @image_base64 %>" alt="" />
+        <!-- if there is a message -->
+        <% if @message %>
+            <!-- print that message -->
+            <p class="text-center" id="warning-message"><strong><%= @message %></strong></p>
+        <% end %>
         </div>
         <div id="content">
           <article class="profile_quote">

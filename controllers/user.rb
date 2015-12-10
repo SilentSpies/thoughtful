@@ -37,8 +37,8 @@ class UserController < ApplicationController
         # save into session control
         session[:current_user] = user
         # cookie can't hold the image base64, so put it in a separate table
-        current_user = Account.find_by(user_name: session[:current_user].user_name)
-        profile_image = ProfileImage.create(user_id: current_user.id, image_base64: params[:image_base64])
+        # current_user = Account.find_by(user_name: session[:current_user].user_name)
+        profile_image = ProfileImage.create(user_id: get_current_user.id, image_base64: params[:image_base64])
         # force the URL to the items root to show list
         redirect "/users/profile_home"
       else
@@ -88,16 +88,18 @@ class UserController < ApplicationController
 
     # profile_view (main page where quote / images will be)
     get "/profile_home" do
-
-        current_user = Account.find_by(user_name: session[:current_user].user_name)
-        profile_image = ProfileImage.find_by(user_id: current_user.id)
-
-        @user_name = current_user.user_name.capitalize
-        @image_base64 = profile_image.image_base64
-        erb :profile_home
-
+      authorization_check
+      # set the current user
+      # current_user = Account.find_by(user_name: session[:current_user].user_name)
+      # get their profile image (different table)
+      profile_image = ProfileImage.find_by(user_id: get_current_user.id)
+      # set variables for erb display
+      @user_name = get_current_user.user_name.capitalize
+      @image_base64 = profile_image.image_base64
+      erb :profile_home
     end
 
+    # a searched user will show their favorites
     post "/profile_search" do
       if does_user_exist(params[:user_name]) == true
         searched_user = Account.find_by(user_name: params[:user_name])
@@ -111,6 +113,9 @@ class UserController < ApplicationController
         # get all items tied to user id from DB
         @quotes = Quote.where(user_id: @user)
         erb :profile_search
+      else
+        @message = "The username: " + params[:user_name] + " doesn't exist!"
+        erb :profile_home
       end
     end
 
