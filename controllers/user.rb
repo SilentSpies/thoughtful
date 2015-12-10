@@ -27,7 +27,9 @@ class UserController < ApplicationController
     post "/register" do
       # check if the user name already exists
       if does_user_exist(params[:user_name]) == true
-        return {:message => "user already exists"}.to_json
+        @message = "User already exists!"
+        erb :register
+        # return {:message => "user already exists"}.to_json
       end
       # if the form has been filled out properly
       # TODO: update this depending on the DB table!
@@ -37,7 +39,13 @@ class UserController < ApplicationController
         # save into session control
         session[:current_user] = user
         # cookie can't hold the image base64, so put it in a separate table
-        profile_image = ProfileImage.create(user_id: get_current_user.id, image_base64: params[:image_base64])
+        # if the user doesn't upload an image, use the small logo (in table as user_id => 0)
+        if params[:image_base64] != ""
+          profile_image = ProfileImage.create(user_id: get_current_user.id, image_base64: params[:image_base64])
+        else
+          tempImage = ProfileImage.find_by(user_id: 0).image_base64
+          profile_image = ProfileImage.create(user_id: get_current_user.id, image_base64: tempImage)
+        end
         # force the URL to the items root to show list
         redirect "/users/profile_home"
       else
@@ -121,7 +129,7 @@ class UserController < ApplicationController
       else
         @user_name = get_current_user.user_name.capitalize
         @image_base64 = get_current_user_profile_image.image_base64
-        @message = "The username: " + params[:user_name] + " doesn't exist!"
+        @message = "The username " + params[:user_name] + " doesn't exist!"
         erb :profile_home
       end
     end

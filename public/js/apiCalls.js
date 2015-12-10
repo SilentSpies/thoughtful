@@ -42,13 +42,13 @@ $(document).ready(function() {
             $.each( data.hits, function( i, item ) {
               counter += 1;
               $("<li class='slide'><img src='" + item.webformatURL + "'></li>").appendTo(".profile_image_row");
-              if (counter >= 6) return false; // only bring up X pictures
+              if (counter >= 10) return false; // only bring up X pictures
             });
         },
         error: function(request, status, err) {
           if (status == "timeout") {
               // timeout -> reload the page and try again
-              console.log("timeout occured");
+              console.log("ImageAPI - timeout occured");
               // window.location.href = '/not_found';
               //  clearInterval(ajax_call);
               // window.location.reload(); //make it comment if you don't want to reload page
@@ -96,12 +96,16 @@ $(document).ready(function() {
 var getQuote = {
     type: 'get',
     url: '/api/quotes',
+    timeout: 3000,
     dataType: 'json',
     success: function(data) {
         console.log("success");
         console.log(data);
         // console.log(data.contents.quote);
         // console.log(data.contents.author);
+        if (data.contents.author == "") {
+          data.contents.author = "Unknown"
+        };
 
         $('.profile_quote').append("<blockquote>");
         $("blockquote").append("<p id='quote-text'>");
@@ -110,7 +114,19 @@ var getQuote = {
         $("#author").text(data.contents.author);
 
     },
-    error: function(error) {
+    error: function(request, status, err) {
+      if (status == "timeout") {
+          // timeout -> reload the page and try again
+          console.log("Quote API - timeout occured");
+          // window.location.href = '/not_found';
+          //  clearInterval(ajax_call);
+          // window.location.reload(); //make it comment if you don't want to reload page
+      } else {
+          // another error occured
+          alert("error: " + request + status + err);
+      }
+    },
+    fail: function(error) {
         console.log("error")
         console.log(error);
     }
@@ -154,6 +170,7 @@ var getPixabay = {
       console.log("Something has gone wrong ^");
   }
 };
+
 
 
 

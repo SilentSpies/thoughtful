@@ -51,7 +51,11 @@ class ApplicationController < Sinatra::Base
 
   # get the current user profile image
   def get_current_user_profile_image
-    return ProfileImage.find_by(user_id: get_current_user.id)
+    if ProfileImage.find_by(user_id: get_current_user.id).image_base64 != ""
+      return ProfileImage.find_by(user_id: get_current_user.id)
+    else
+      return "/img/logo/small-logo.png"
+    end
   end
 
   not_found do
