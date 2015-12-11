@@ -56,6 +56,8 @@ Thoughtful: Be Inspired App
 
 ### Installation:
 **Install on your local system**
+* *Git* the files
+  * Fork the repository and `git clone` to your local system
 * Setting up the Database
   * Required: Postgresql (http://www.postgresql.org/)
   * Run the commands in `migration.sql` -> `db/migrations.sql` to initialize the DB and tables
@@ -119,7 +121,7 @@ Thoughtful: Be Inspired App
       QUOTE_API_KEY="api-key-here"
       DB_name="database_name"
       ```
-  * From github, clone down the repository
+  * From github, fork to your repositories and `git clone` the repository to the server
   * Setting up the Database
     * Required: Postgresql (http://www.postgresql.org/)
     * Run the commands in `migration.sql` -> `db/migrations.sql` to initialize the DB and tables
