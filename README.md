@@ -1,9 +1,10 @@
 # thoughtful
-[Thoughtful: Be Inspired App](http://104.131.68.166/) <--- Click me!
+### [Thoughtful: Be Inspired App](http://104.131.68.166/) <--- Click me!
+<br>
+<br>
 
 
-
-### Screenshots
+### Screenshots:
 <p align="center">
   <img src="https://github.com/SilentSpies/thoughtful/blob/master/public/img/logo/thoughtful-logo-4.png" alt="thoughtful: be inspired"/>
   <br>
@@ -24,16 +25,17 @@
 * JSON - API Dealing
 * DOTENV - Hiding API Keys
 * Skeleton - Basic CSS Framework
-* BXSlider - Image Carousel - http://bxslider.com/
-* CSS Button Generator - Delete Button - http://css3buttongenerator.com/
+* [BXSlider](http://bxslider.com/) - Image Carousel 
+* [CSS Button Generator](http://css3buttongenerator.com/) - Delete Button
 * Base64 FileReader - Encoding of Images to text
-* invision - Basic Prototype - http://invisionapp.com
-* Google Draw - Wireframes / ERD -  https://drive.google.com/open?id=1Q0SgoOWThzPv90nJdAsx9NXS9m0Pkh16p4kF3Mq-JUs
+* [invision](http://invisionapp.com) - Basic Prototype
+* Google Draw - Wireframes / ERD
 
 ### Links:
-* Wireframes and ERD -  https://drive.google.com/open?id=1Q0SgoOWThzPv90nJdAsx9NXS9m0Pkh16p4kF3Mq-JUs
-* Prototype - https://invis.io/9857GMUCT
-* User Stories - https://github.com/SilentSpies/thoughtful/blob/master/README-UserStories.md
+* [Wireframes and ERD](https://drive.google.com/open?id=1Q0SgoOWThzPv90nJdAsx9NXS9m0Pkh16p4kF3Mq-JUs)
+* [Prototype](https://invis.io/9857GMUCT)
+* [User Stories](https://github.com/SilentSpies/thoughtful/blob/master/README-UserStories.md)
+* Live App - [thoughtful: be inspired](http://104.131.68.166/)
 
 ### Approach:
 * Ruby Controllers
