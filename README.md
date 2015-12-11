@@ -6,9 +6,11 @@ Thoughtful: Be Inspired App
 <p align="center">
   <img src="https://github.com/SilentSpies/thoughtful/blob/master/public/img/logo/thoughtful-logo-4.png" alt="thoughtful: be inspired"/>
   <br>
-  <img width="200px" src="https://github.com/SilentSpies/thoughtful/blob/master/screenshots/thoughtful-home&login.png" alt="thoughtful: be inspired - Home & Login View"/>
-  <img width="200px" src="https://github.com/SilentSpies/thoughtful/blob/master/screenshots/thoughtful-profilehome.png" alt="thoughtful: be inspired - Home & Login View"/>
-  <img width="200px" src="https://github.com/SilentSpies/thoughtful/blob/master/screenshots/thoughtful-favorites.png" alt="thoughtful: be inspired - Home & Login View"/>
+  <img width="400px" src="https://github.com/SilentSpies/thoughtful/blob/master/screenshots/thoughtful-home&login.png" alt="thoughtful: be inspired - Home & Login View"/>
+  <br>
+  <img width="400px" src="https://github.com/SilentSpies/thoughtful/blob/master/screenshots/thoughtful-profilehome.png" alt="thoughtful: be inspired - Home & Login View"/>
+  <br>
+  <img width="400px" src="https://github.com/SilentSpies/thoughtful/blob/master/screenshots/thoughtful-favorites.png" alt="thoughtful: be inspired - Home & Login View"/>
 </p>
 
 ### Technology:
@@ -53,7 +55,7 @@ Thoughtful: Be Inspired App
 
 
 ### Installation:
-Install on your local system
+**Install on your local system**
 * Setting up the Database
   * Required: Postgresql (http://www.postgresql.org/)
   * Run the commands in `migration.sql` -> `db/migrations.sql` to initialize the DB and tables
@@ -64,7 +66,7 @@ Install on your local system
 * Check it out
   * In your favorite browser, go to `localhost:9292`
 
-Install on Digital Ocean
+**Install on Digital Ocean**
 * Create Droplet
   * Set name of droplet ... `thoughtful`
   * Choose plan ... $5/month
