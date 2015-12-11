@@ -126,7 +126,7 @@
       ```
   * From github, fork to your repositories and `git clone` the repository to the server (use the HTTP link)
   * Setting up the Database
-    * Required: Postgresql (http://www.postgresql.org/)
+    * Required: [Postgresql](http://www.postgresql.org/)
     * Run the commands in `migration.sql` -> `db/migrations.sql` to initialize the DB and tables
     * Run the commands in `seed.sql` -> `db/migrations.sql` to create the default profile image
   * Preparing for a HTTParty
@@ -141,3 +141,4 @@
 * Social Sharing
 * Log in with Facebook / Google+ / etc - Facebook requires app approval
 * API Call Delay - Slight delay when looking at Profile Home, pulling in the quote and images takes time
+* Improvements on mobile responsive-ness
