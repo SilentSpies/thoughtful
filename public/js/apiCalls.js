@@ -112,7 +112,7 @@ var getQuote = {
         $("#quote-text").text("\"" + data.contents.quote + "\"");
         $("blockquote").append("<footer id='author'>");
         $("#author").text(data.contents.author);
-        $("blockquote").append('<input id="btn-tweet" type="button" onclick="location.href=\'http://twitter.com/home/?status="+ data.contents.quote + "&#8212;" + data.contents.author + "\'; value="tweet this" />');
+        $("blockquote").append('<input id="btn-tweet" type="button" onclick="location.href=\'http://twitter.com/home/?status='+ data.contents.quote + "&#8212;" + data.contents.author + '\'"; value="Tweet" />');
 
     },
     error: function(request, status, err) {
