@@ -5,9 +5,10 @@ Thoughtful: Be Inspired App
 ### Screenshots
 <p align="center">
   <img src="https://github.com/SilentSpies/thoughtful/blob/master/public/img/logo/thoughtful-logo-4.png" alt="thoughtful: be inspired"/>
-  <img src="https://github.com/SilentSpies/thoughtful/blob/master/screenshots/thoughtful-home&login.png" alt="thoughtful: be inspired - Home & Login View"/>
-  <img src="https://github.com/SilentSpies/thoughtful/blob/master/screenshots/thoughtful-profilehome.png" alt="thoughtful: be inspired - Home & Login View"/>
-  <img src="https://github.com/SilentSpies/thoughtful/blob/master/screenshots/thoughtful-favorites.png" alt="thoughtful: be inspired - Home & Login View"/>
+  <br>
+  <img width="200px" src="https://github.com/SilentSpies/thoughtful/blob/master/screenshots/thoughtful-home&login.png" alt="thoughtful: be inspired - Home & Login View"/>
+  <img width="200px" src="https://github.com/SilentSpies/thoughtful/blob/master/screenshots/thoughtful-profilehome.png" alt="thoughtful: be inspired - Home & Login View"/>
+  <img width="200px" src="https://github.com/SilentSpies/thoughtful/blob/master/screenshots/thoughtful-favorites.png" alt="thoughtful: be inspired - Home & Login View"/>
 </p>
 
 ### Technology:
