@@ -16,7 +16,7 @@
 </p>
 
 ### Technology:
-* HTML & CSS
+* HTML, CSS, JavaScript, jQuery
 * Embedded Ruby for View management
 * Sinatra - MVC and Sessions
 * Postgresql - Database management
@@ -142,3 +142,6 @@
 * Log in with Facebook / Google+ / etc - Facebook requires app approval
 * API Call Delay - Slight delay when looking at Profile Home, pulling in the quote and images takes time
 * Improvements on mobile responsive-ness
+
+[David Beeler](https://github.com/mrbeewer) & [Jan Christian Bernabe](https://github.com/spramp)
+December 11, 2015
