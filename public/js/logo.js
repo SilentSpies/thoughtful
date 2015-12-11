@@ -7,7 +7,7 @@ $(document).ready(function() {
   $('.main-logo').append('<picture><source srcset="/img/logo/thoughtful-logo-4.png" media="(min-width: 600px)"><img id="main-logo-image" src="/img/logo/thoughtful-logo-4-small.png" alt="logo"></picture>');
   // add a click event for the logo
   $('#main-logo-image').bind('click', function() {
-    window.location.href = '/';
+    window.location.href = '/users/profile_home';
   })
 });
 
