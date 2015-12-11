@@ -144,4 +144,5 @@
 * Improvements on mobile responsive-ness
 
 [David Beeler](https://github.com/mrbeewer) & [Jan Christian Bernabe](https://github.com/spramp)
+
 December 11, 2015
