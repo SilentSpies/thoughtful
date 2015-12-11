@@ -83,6 +83,7 @@ h3 {
 
 .container {
   text-align: center;
+  min-height: 100%;
 }
 
 .favorite-list {
