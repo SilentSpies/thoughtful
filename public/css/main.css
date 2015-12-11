@@ -5,6 +5,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-color: grey;
+  min-height: 100%;
   font-size: 1.0rem;
   font-family: 'Raleway', Arial, sans-serif;
 }
