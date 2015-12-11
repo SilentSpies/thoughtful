@@ -138,7 +138,7 @@
 
 
 ### Unsolved Problems:
-* Social Sharing
+* Social Sharing (Tweeting implemented)
 * Log in with Facebook / Google+ / etc - Facebook requires app approval
 * API Call Delay - Slight delay when looking at Profile Home, pulling in the quote and images takes time
 * Improvements on mobile responsive-ness
