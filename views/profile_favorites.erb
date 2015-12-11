@@ -17,6 +17,7 @@
             <p class="text-center" id="warning-message"><strong><%= @message %></strong></p>
         <% end %>
       </nav>
+
       <div class="profile_image_container">
         <h3>Hello, <%= @user_name %>!</h3>
         <img id="profile_pic" src="<%= @image_base64 %>" alt="" />
@@ -36,8 +37,8 @@
                 </li>
             <% else %>
                 <li>
-                      <%= quote.quote %> &#8212; Unknown
-                      <form class="" method="post" style="display: inline;"><input formaction="/favorite/quote-delete/<%= quote.id %>" id="btn-delete" type="submit" value="x"></form>
+                    <%= quote.quote %> &#8212; Unknown
+                    <form class="" method="post" style="display: inline;"><input formaction="/favorite/quote-delete/<%= quote.id %>" id="btn-delete" type="submit" value="x"></form>
                 </li>
             <% end %>
           <% end %>

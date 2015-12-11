@@ -20,29 +20,31 @@
             <p class="text-center" id="warning-message"><strong><%= @message %></strong></p>
         <% end %>
       </nav>
+
       <div class="profile_image_container">
         <h3>Hello, <%= @user_name %>!
           <p style="display: inline; font-family: Raleway, Arial, sans-serif;
               font-size: 10px; font-weight: normal;"><a href="/users/edit_profile">Edit Profile</a></p>
         </h3>
         <img id="profile_pic" src="<%= @image_base64 %>" alt="" />
+      </div>
 
-        </div>
+      <div id="content">
+        <article class="profile_quote">
+        </article>
+        <form class="" action="/favorite/quote" method="post">
+          <input id="setQuote" type="hidden" name="quote" value="">
+          <input id="setAuthor" type="hidden" name="author" value="">
+          <input id="btn_favorite" class="button-primary" type="submit" name="favorite_quote" value="Favorite">
+        </form>
+      </div>
 
-        <div id="content">
-          <article class="profile_quote">
-          </article>
-          <form class="" action="/favorite/quote" method="post">
-            <input id="setQuote" type="hidden" name="quote" value="">
-            <input id="setAuthor" type="hidden" name="author" value="">
-            <input id="btn_favorite" class="button-primary" type="submit" name="favorite_quote" value="Favorite">
-          </form>
-        </div>
-        <div class="profile_image_row">
+      <!-- ImageAPI will put images below -->
+      <div class="profile_image_row">
 
-        </div>
-<br>
-<br>
+      </div>
+      <br>
+      <br>
     </div>
   </div>
 </div>

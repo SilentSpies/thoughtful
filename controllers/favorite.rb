@@ -5,11 +5,13 @@ class FavoriteController < ApplicationController
   # add quote to Quotes table (favorites)
   post "/quote" do
     authorization_check
-    current_user = Account.find_by(user_name: session[:current_user].user_name)
-    quote = Quote.create(user_id: current_user.id, quote: params[:quote], author: params[:author] )
+    # save the quote into the table
+    quote = Quote.create(user_id: get_current_user.id, quote: params[:quote], author: params[:author] )
     redirect "/users/profile_home"
   end
 
+
+  # show the favorite quotes
   get "/quotes" do
     authorization_check
     # grab the current_user id
@@ -22,6 +24,8 @@ class FavoriteController < ApplicationController
     erb :profile_favorites
   end
 
+
+  # show the favorite quotes
   post "/quotes" do
     authorization_check
     # grab the current_user id
@@ -35,7 +39,7 @@ class FavoriteController < ApplicationController
   end
 
 
-
+  # delete the quote (from id) from the table
   post "/quote-delete/:id" do
     authorization_check
     # find the item row by id and destroy (remove from DB)

@@ -1,12 +1,17 @@
 
 $(document).ready(function() {
 
+    // TODO: Clean / Straighten ajax calls
+    //   although this works, it is super messy and
+    //   difficult to read through. 
+
     // Quote API
     $.when( $.ajax(getQuote) ).done(function() {
       console.log($('#quote-text').text());
       // get rid of things we don't want...
       var quoteString= cleanUpString($('#quote-text').text());
       console.log(quoteString);
+      // turn into an array
       var quoteArray = quoteString.split(" ");
       // remove duplicates
       quoteArray = unique(quoteArray);
@@ -49,9 +54,7 @@ $(document).ready(function() {
           if (status == "timeout") {
               // timeout -> reload the page and try again
               console.log("ImageAPI - timeout occured");
-              // window.location.href = '/not_found';
-              //  clearInterval(ajax_call);
-              // window.location.reload(); //make it comment if you don't want to reload page
+              // TODO: deal with timeout properly
           } else {
               // another error occured
               alert("error: " + request + status + err);
@@ -66,30 +69,27 @@ $(document).ready(function() {
 
       })).done(function() { // END IMAGE API CALL
 
-      var setQuoteText = document.querySelector("#setQuote");
-      var setAuthorText = document.querySelector("#setAuthor");
+        var setQuoteText = document.querySelector("#setQuote");
+        var setAuthorText = document.querySelector("#setAuthor");
 
-      setQuoteText.value = $("#quote-text").text();
-      setAuthorText.value = $("#author").text();
+        setQuoteText.value = $("#quote-text").text();
+        setAuthorText.value = $("#author").text();
 
-      $('.profile_image_row').bxSlider({
-        slideWidth: 600,
-        minSlides: 1,
-        maxSlides: 1,
-        // auto: true, //auto play enabled (true)
-        autoControls: true,
-        adaptiveHeight: true,
-        mode: 'fade',
-        infiniteLoop: true
+        $('.profile_image_row').bxSlider({
+          slideWidth: 600,
+          minSlides: 1,
+          maxSlides: 1,
+          // auto: true, //auto play enabled (true)
+          autoControls: true,
+          adaptiveHeight: true,
+          mode: 'fade',
+          infiniteLoop: true
+        });
       });
-    });
 
     }); // END WHEN
 
-
-
-
-}); // end of READY
+}); // END DOC READY
 
 
 // Quote API Call
@@ -118,9 +118,6 @@ var getQuote = {
       if (status == "timeout") {
           // timeout -> reload the page and try again
           console.log("Quote API - timeout occured");
-          // window.location.href = '/not_found';
-          //  clearInterval(ajax_call);
-          // window.location.reload(); //make it comment if you don't want to reload page
       } else {
           // another error occured
           alert("error: " + request + status + err);
@@ -131,8 +128,6 @@ var getQuote = {
         console.log(error);
     }
 };
-
-
 
 
 
@@ -173,7 +168,6 @@ var getPixabay = {
 
 
 
-
 function cleanUpString(str) {
   // first, lets get rid of unhelpful (for searching) words
   // \b -> word boundary ... gi -> global, ignore case
@@ -185,16 +179,15 @@ function cleanUpString(str) {
   str = str.replace(/\b(up|upon|with|within|without|through|between)\b/gi, '');
   str = str.replace(/\b(out|can't|won't|don't|I|me|we|you|us|our)\b/gi, '');
   str = str.replace(/\b(have|had|their|there|they|that|when|your)\b/gi, '');
-
   // next, lets get rid of punctuation
   str = str.replace(/[.,-\/#!?$%\^&\*;:{}=\-_`'"~()]/g,"");
   // fix double spaces, if there are any
   str = str.replace(/\s{2,}/g," ");
-
   //send it back
   return str;
-
 }
+
+
 
 // source: https://jsfiddle.net/Guffa/Askwb/
 function unique(list) {

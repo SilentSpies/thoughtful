@@ -3,9 +3,11 @@ class ApplicationController < Sinatra::Base
   require "bundler"
   Bundler.require
 
+  # for api key hiding (and other to hide other stuff)
   require "dotenv"
   Dotenv.load
 
+  # connection to database, be sure to use the correct name from the .ENV file!
   ActiveRecord::Base.establish_connection(
     :adapter => "postgresql",
     :database => ENV['DB_name']
@@ -43,10 +45,12 @@ class ApplicationController < Sinatra::Base
   end
 
 
+
   # get the current user information
   def get_current_user
     return Account.find_by(user_name: session[:current_user].user_name)
   end
+
 
 
   # get the current user profile image
@@ -57,6 +61,8 @@ class ApplicationController < Sinatra::Base
       return "/img/logo/small-logo.png"
     end
   end
+
+
 
   not_found do
     erb :not_found

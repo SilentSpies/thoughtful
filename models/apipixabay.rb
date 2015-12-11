@@ -1,4 +1,3 @@
-
 class APIPixabay
   require "httparty"
   include HTTParty

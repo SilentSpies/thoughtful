@@ -9,8 +9,6 @@ class APIQuotes
     quoteCategories = ["courage", "inspirational", "motivational", "hope", "dream", "strength", "success", "beauty"]
 
     @options = { query: {category: quoteCategories.sample, maxlength: 500} }
-    # @headers = { headers: {
-    # "Accept" => "application/json" } }
   end
 
   def get_data

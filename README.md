@@ -1,5 +1,5 @@
 # thoughtful
-### [Thoughtful: Be Inspired App](http://104.131.68.166/) <--- Click me!
+### [Thoughtful: Be Inspired App](http://thoughtful.website/) <--- Click me!
 <br>
 <br>
 
@@ -25,7 +25,7 @@
 * JSON - API Dealing
 * DOTENV - Hiding API Keys
 * Skeleton - Basic CSS Framework
-* [BXSlider](http://bxslider.com/) - Image Carousel 
+* [BXSlider](http://bxslider.com/) - Image Carousel
 * [CSS Button Generator](http://css3buttongenerator.com/) - Delete Button
 * Base64 FileReader - Encoding of Images to text
 * [invision](http://invisionapp.com) - Basic Prototype
@@ -35,7 +35,7 @@
 * [Wireframes and ERD](https://drive.google.com/open?id=1Q0SgoOWThzPv90nJdAsx9NXS9m0Pkh16p4kF3Mq-JUs)
 * [Prototype](https://invis.io/9857GMUCT)
 * [User Stories](https://github.com/SilentSpies/thoughtful/blob/master/README-UserStories.md)
-* Live App - [thoughtful: be inspired](http://104.131.68.166/)
+* Live App - [thoughtful: be inspired](http://thoughtful.website/)
 
 ### Approach:
 * Ruby Controllers
@@ -46,7 +46,7 @@
   * FavoriteController - controls the saving and serving of favorited quotes
 * Brainstorm -> Conception -> Deployment
   * Brainstorming and Wireframing:
-    * After discussing a few ideas, the topic of an inspirational based app was decided upon. With that basic topic defined, the discussion focused to potential attributes of the app; specifically what we wanted it to do. While thinking this through, [wireframes](https://drive.google.com/open?id=1Q0SgoOWThzPv90nJdAsx9NXS9m0Pkh16p4kF3Mq-JUs) were hand-sketched and the digitized. A [prototype](https://invis.io/9857GMUCT) was also generated for more visuals. 
+    * After discussing a few ideas, the topic of an inspirational based app was decided upon. With that basic topic defined, the discussion focused to potential attributes of the app; specifically what we wanted it to do. While thinking this through, [wireframes](https://drive.google.com/open?id=1Q0SgoOWThzPv90nJdAsx9NXS9m0Pkh16p4kF3Mq-JUs) were hand-sketched and the digitized. A [prototype](https://invis.io/9857GMUCT) was also generated for more visuals.
   * Flesh out the idea / Basic building blocks:
     * In tandem we fleshed out the basic idea through user stories to determine the minimal viable product (MVP) as well as created the folder structure and base files to build the app from (Sinatra base with Controllers).
   * Layout for Design / Layout for Backend
@@ -80,7 +80,7 @@
   * Click CREATE
 * Config that Server!
   * Once the email from Digital Ocean arrives, keep note of the IP address and password, you will need those in the next steps.
-  * On the terminal, access the server by `ssh root@IP.IP.IP.IP` using the provided IP address.
+  * On the terminal, access the server by `ssh root@123.123.123.123` using the IP sent by Digital Ocean.
   * Answer yes to the authenticity alert
   * Enter the provided password (twice) and setup a new password
   Use the following commands
@@ -124,16 +124,17 @@
       QUOTE_API_KEY="api-key-here"
       DB_name="database_name"
       ```
-  * From github, fork to your repositories and `git clone` the repository to the server
+  * From github, fork to your repositories and `git clone` the repository to the server (use the HTTP link)
   * Setting up the Database
     * Required: Postgresql (http://www.postgresql.org/)
     * Run the commands in `migration.sql` -> `db/migrations.sql` to initialize the DB and tables
     * Run the commands in `seed.sql` -> `db/migrations.sql` to create the default profile image
   * Preparing for a HTTParty
     * Within the root `thoughtful` folder, run `bundle` from the terminal. This will prepare/install the necessary gems for this project. If they are all successful, continue on...
-    * Again from the root `thoughtful` folder, run `bundle exec rackup` to start this HTTParty!
+    * Again from the root `thoughtful` folder, run `bundle exec rackup -p 80 --host 0.0.0.0` to start this HTTParty!
   * Check it out
     * In your favorite browser, go to the IP address provided by DigitalOcean!
+    * To keep the server running after disconnecting, run `nohup bundle exec rackup -p 80 --host 0.0.0.0`
 
 
 ### Unsolved Problems:

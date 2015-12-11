@@ -27,51 +27,46 @@
 <script type="text/javascript">
   $(document).ready(function() {
 
-  var fileInput = document.querySelector("#user_image");
-  // var btnConvert = document.querySelector("#btnConvert");
-  var textOutput = document.querySelector("#image_base64");
-  // var multiOutput = document.querySelector("#multi_line_box");
+    var fileInput = document.querySelector("#user_image");
+    var textOutput = document.querySelector("#image_base64");
 
-  fileInput.addEventListener("change",function() {
-    console.log(fileInput.files.length);
-    if (fileInput.files.length > 0) {
-      convertImage(fileInput.files[0], textOutput);
-    } else {
-      console.log("You haven't selected a file");
-      throw new Error("No file selected");
-    }
-  });
+    fileInput.addEventListener("change",function() {
+      console.log(fileInput.files.length);
+      if (fileInput.files.length > 0) {
+        convertImage(fileInput.files[0], textOutput);
+      } else {
+        console.log("You haven't selected a file");
+        throw new Error("No file selected");
+      }
+    });
   });
 
 
   function convertImage(img_file, textOutput, multiOutput) {
 
-  console.log("create reader");
-  var reader = new FileReader();
-
-  reader.onload = function(event) {
-    try {
-      console.log("onload");
-      console.log(reader.result);
-      textOutput.value = reader.result;
-      // multiOutput.value = reader.result;
-      // appendImage(reader.result);
-    } catch (err) {
-      throw new Error("Unable to convert:" + err)
-    }
-  };
-
-  reader.readAsDataURL(img_file);
-
-  console.log("convertImage done");
+    // create the reader for encoding
+    var reader = new FileReader();
+    // tasks to do after processing
+    reader.onload = function(event) {
+      try {
+        console.log("onload");
+        console.log(reader.result);
+        textOutput.value = reader.result;
+      } catch (err) {
+        throw new Error("Unable to convert:" + err)
+      }
+    };
+    // "read" the file and encode it
+    reader.readAsDataURL(img_file);
+    // console.log("convertImage done");
   }
 
+
   function appendImage(img) {
-  console.log(img);
-  var imgTag = "<img>";
-  $("body").append("<img>");
-  $("img").prop("src", img);
-  // $(imgTag).prop("src",img);
+    console.log(img);
+    var imgTag = "<img>";
+    $("body").append("<img>");
+    $("img").prop("src", img);
   }
 
 </script>

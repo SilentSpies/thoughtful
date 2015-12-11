@@ -19,7 +19,6 @@ class UserController < ApplicationController
 
 
 
-
     # user registration
     get "/register" do
       erb :register
@@ -29,30 +28,30 @@ class UserController < ApplicationController
       if does_user_exist(params[:user_name]) == true
         @message = "User already exists!"
         erb :register
-        # return {:message => "user already exists"}.to_json
       end
-      # if the form has been filled out properly
-      # TODO: update this depending on the DB table!
+      # check if the form has been filled out properly
       if (params[:user_email] != "" && params[:user_name] != "" && params[:password] != "")
         # make the user name
         user = Account.create(user_email: params[:user_email], user_name: params[:user_name], full_name: params[:full_name], password: params[:password] )
         # save into session control
         session[:current_user] = user
-        # cookie can't hold the image base64, so put it in a separate table
+        # cookies can't hold the image base64, so put it in a separate table
         # if the user doesn't upload an image, use the small logo (in table as user_id => 0)
         if params[:image_base64] != ""
           profile_image = ProfileImage.create(user_id: get_current_user.id, image_base64: params[:image_base64])
         else
-          tempImage = ProfileImage.find_by(user_id: 0).image_base64
+          # from seed, generic profile picture is id: 1
+          tempImage = ProfileImage.find_by(user_id: 1).image_base64
           profile_image = ProfileImage.create(user_id: get_current_user.id, image_base64: tempImage)
         end
-        # force the URL to the items root to show list
+        # force the URL to the profile home
         redirect "/users/profile_home"
       else
         @message = "All fields must have a value"
         erb :register
       end
     end
+
 
 
     # due similarity of registration, keeping it near it
@@ -63,25 +62,21 @@ class UserController < ApplicationController
     post "/edit_profile" do
 
       # if the form has been filled out properly
-      # TODO: update this depending on the DB table!
       if (params[:user_email] != "" && params[:user_name] != "" && params[:password] != "")
-        # make the user name
-        # user = Account.create(user_email: params[:user_email], user_name: params[:user_name], full_name: params[:full_name], password: params[:password] )
-
-        # save into session control
+        # grab current user info and save changes
         @user = get_current_user
         @user.user_email = params[:user_email]
         @user.user_name = params[:user_name]
         @user.full_name = params[:full_name]
         @user.password = params[:password]
         @user.save
-
+        # if no image is selected, use the default
         if params[:image_base64] != ""
           @profile_image = ProfileImage.find_by(user_id: get_current_user.id)
           @profile_image.image_base64 = params[:image_base64]
           @profile_image.save
         else
-          tempImage = ProfileImage.find_by(user_id: 0).image_base64
+          tempImage = ProfileImage.find_by(user_id: 1).image_base64
           @profile_image = ProfileImage.find_by(user_id: get_current_user.id)
           @profile_image.image_base64 = tempImage
           @profile_image.save
@@ -95,6 +90,7 @@ class UserController < ApplicationController
         erb :register
       end
     end
+
 
 
     # user login
