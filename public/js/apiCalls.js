@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     // TODO: Clean / Straighten ajax calls
     //   although this works, it is super messy and
-    //   difficult to read through. 
+    //   difficult to read through.
 
     // Quote API
     $.when( $.ajax(getQuote) ).done(function() {
@@ -112,6 +112,7 @@ var getQuote = {
         $("#quote-text").text("\"" + data.contents.quote + "\"");
         $("blockquote").append("<footer id='author'>");
         $("#author").text(data.contents.author);
+        $("blockquote").append('<input id="btn-tweet" type="button" onclick="location.href=\'http://twitter.com/home/?status="+ data.contents.quote + "&#8212;" + data.contents.author + "\'; value="tweet this" />');
 
     },
     error: function(request, status, err) {

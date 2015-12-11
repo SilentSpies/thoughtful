@@ -8,7 +8,7 @@ class APIQuotes
   def initialize
     quoteCategories = ["courage", "inspirational", "motivational", "hope", "dream", "strength", "success", "beauty"]
 
-    @options = { query: {category: quoteCategories.sample, maxlength: 500} }
+    @options = { query: {category: quoteCategories.sample, maxlength: 125} }
   end
 
   def get_data
