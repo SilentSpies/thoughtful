@@ -46,7 +46,7 @@
   * FavoriteController - controls the saving and serving of favorited quotes
 * Brainstorm -> Conception -> Deployment
   * Brainstorming and Wireframing:
-    * After discussing a few ideas, the topic of an inspirational based app was decided upon. With that basic topic defined, the discussion focused to potential attributes of the app; specifically what we wanted it to do. While thinking this through, wireframes (https://drive.google.com/open?id=1Q0SgoOWThzPv90nJdAsx9NXS9m0Pkh16p4kF3Mq-JUs) were hand-sketched and the digitized. A prototype was also generated for more visuals. (https://invis.io/9857GMUCT)
+    * After discussing a few ideas, the topic of an inspirational based app was decided upon. With that basic topic defined, the discussion focused to potential attributes of the app; specifically what we wanted it to do. While thinking this through, [wireframes](https://drive.google.com/open?id=1Q0SgoOWThzPv90nJdAsx9NXS9m0Pkh16p4kF3Mq-JUs) were hand-sketched and the digitized. A [prototype](https://invis.io/9857GMUCT) was also generated for more visuals. 
   * Flesh out the idea / Basic building blocks:
     * In tandem we fleshed out the basic idea through user stories to determine the minimal viable product (MVP) as well as created the folder structure and base files to build the app from (Sinatra base with Controllers).
   * Layout for Design / Layout for Backend
