@@ -27,6 +27,8 @@
 * Skeleton - Basic CSS Framework
 * [BXSlider](http://bxslider.com/) - Image Carousel
 * [CSS Button Generator](http://css3buttongenerator.com/) - Delete Button
+* [ajaxload.info](http://ajaxload.info/) - Loading Gif image
+* [Loading Gif CSS](https://blog.oio.de/2010/11/08/how-to-create-a-loading-animation-spinner-using-jquery/) - CSS and pointer for HTML / JS
 * Base64 FileReader - Encoding of Images to text
 * [invision](http://invisionapp.com) - Basic Prototype
 * Google Draw - Wireframes / ERD
